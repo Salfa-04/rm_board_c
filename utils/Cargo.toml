@@ -22,7 +22,6 @@ features = ["defmt", "single-bank", "time-driver-any", "stm32f407ig", "memory-x"
 defmt.workspace = true
 
 embassy-futures = "0.1"
-bitfield-struct = "0.12"
 
 portable-atomic = { version = "1", features = ["float"] }
 defmt-rtt       = { version = "1.0", features = ["disable-blocking-mode"] }
@@ -30,6 +29,7 @@ heapless        = { version = "0.9", features = ["defmt", "portable-atomic"] }
 embassy-sync    = { version = "0.7", features = ["defmt"] }
 embassy-time    = { version = "0.5", features = ["defmt", "tick-hz-32_768"] }
 panic-probe     = { version = "1.0", features = ["print-defmt"] }
+strum           = { version = "0.27", default-features = false, features = ["derive"] }
 
 [dependencies.cortex-m]
 version  = "0.7"

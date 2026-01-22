@@ -16,8 +16,6 @@ mod macros;
 pub use cell::MemCell;
 pub use init::sys_init;
 
-/// Re-exports of `Bitfield Struct` Crate
-pub use bitfield_struct::*;
 /// Re-exports of `Cortex-M` Assembly Instructions
 pub use prelude::ll::asm;
 /// Re-exports of `Cortex-M` Peripheral Types
@@ -33,6 +31,11 @@ pub mod atomic {
 /// Re-exports of `Heapless` Crate
 pub mod heapless {
     pub use ::heapless::*;
+}
+
+/// Re-exports of `Strum` Crate
+pub mod strum {
+    pub use ::strum::*;
 }
 
 /// Preludes for Commonly Used Crates

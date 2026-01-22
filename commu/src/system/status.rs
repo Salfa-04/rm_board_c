@@ -4,7 +4,7 @@
 
 use super::private::*;
 
-static STATUS: AtomicI8 = AtomicI8::new(SysMode::Boot.into_bits());
+static STATUS: AtomicI8 = AtomicI8::new(SysMode::Boot as _);
 
 ///
 /// # System Mode Enumeration
@@ -21,11 +21,9 @@ static STATUS: AtomicI8 = AtomicI8::new(SysMode::Boot.into_bits());
 /// ```
 ///
 #[repr(i8)]
-#[bitenum]
 #[non_exhaustive]
-#[derive(PartialEq, defmt::Format, Debug)]
+#[derive(FromRepr, PartialEq, defmt::Format, Debug)]
 pub enum SysMode {
-    #[fallback]
     Error = -1,
     Boot = 0,
     Normal = 1,
@@ -39,7 +37,10 @@ impl SysMode {
     ///
     #[inline]
     pub fn get() -> SysMode {
-        SysMode::from_bits(STATUS.load(Order))
+        match SysMode::from_repr(STATUS.load(Order)) {
+            Some(x) => x,
+            None => Self::Error,
+        }
     }
 
     ///
@@ -49,7 +50,7 @@ impl SysMode {
     ///
     #[inline]
     pub fn set(self) {
-        STATUS.store(self.into_bits(), Order);
+        STATUS.store(self as _, Order);
     }
 
     ///

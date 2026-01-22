@@ -8,8 +8,8 @@ mod system;
 
 mod tasks {
     pub mod blinky;
+    pub mod bxcan;
     pub mod health;
-    pub mod pictrans;
 }
 
 #[embassy_executor::main]
@@ -24,7 +24,7 @@ async fn entry(s: embassy_executor::Spawner) {
 
     s.must_spawn(tasks::blinky::task(r.blinky));
 
-    s.must_spawn(tasks::pictrans::task(r.uart3p));
+    s.must_spawn(tasks::bxcan::task(s.make_send(), r.can));
 
     s.must_spawn(controller::main());
 }

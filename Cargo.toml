@@ -8,7 +8,7 @@ package.authors = ["Salfa Chang <me@salfa.cc>"]
 default-members = ["utils"]
 
 exclude = ["crates"]
-members = ["utils", "blinky", "commu"]
+members = ["utils", "blinky", "commu", "device"]
 
 
 [profile]
