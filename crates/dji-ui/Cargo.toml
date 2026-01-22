@@ -1,0 +1,21 @@
+[package]
+name = "dji-ui"
+
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+authors.workspace = true
+
+autobenches  = false
+autoexamples = false
+autotests    = false
+
+
+[dependencies]
+dji-frame = { workspace = true }
+
+defmt = { workspace = true, optional = true }
+
+
+[features]
+defmt = ["dep:defmt", "dji-frame/defmt"]

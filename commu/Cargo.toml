@@ -1,0 +1,28 @@
+[package]
+name  = "commu"
+build = "build.rs"
+
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+authors.workspace = true
+
+autobenches  = false
+autoexamples = false
+autotests    = false
+
+
+[dependencies]
+
+dji-frame = { path = "../crates/dji-frame", features = ["defmt"] }
+
+utils.workspace = true
+defmt.workspace = true
+
+cortex-m-rt.workspace      = true
+assign-resources.workspace = true
+embassy-executor.workspace = true
+
+
+[build-dependencies]
+cargo-emit = "0.2"

@@ -1,0 +1,28 @@
+[workspace]
+resolver = "3"
+
+package.version = "0.0.0"
+package.edition = "2024"
+package.publish = false
+package.authors = ["Salfa Chang <me@salfa.cc>"]
+default-members = []
+
+members = ["dji-frame", "dji-pictrans", "dji-gentrans", "dji-ui"]
+
+
+[profile]
+release.lto   = true
+release.debug = false
+
+
+[workspace.dependencies]
+dji-frame = { path = "dji-frame" }
+
+
+[workspace.dependencies.defmt]
+version          = "1.0"
+default-features = false
+
+
+[profile.dev.package]
+defmt.opt-level = 3
